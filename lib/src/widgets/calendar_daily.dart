@@ -58,7 +58,6 @@ class CalendarDaily extends StatelessWidget {
                         gradient: LinearGradient(
                           begin: Alignment.centerLeft,
                           end: Alignment.centerRight,
-                          colors: [Color(0xffffffff), Color(0x0affffff)],
                           tileMode: TileMode.clamp,
                         ),
                       ),
@@ -76,7 +75,6 @@ class CalendarDaily extends StatelessWidget {
                         gradient: LinearGradient(
                           begin: Alignment.centerRight,
                           end: Alignment.centerLeft,
-                          colors: [Color(0xffffffff), Color(0x0affffff)],
                           tileMode: TileMode.clamp,
                         ),
                       ),
