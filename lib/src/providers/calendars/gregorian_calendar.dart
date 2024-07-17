@@ -23,13 +23,25 @@ class GregorianCalendar extends CalendarProvider {
   @override
   CalendarDateTime getPreviousDayDateTime() {
     final date = _getSelectedDate();
-    return CalendarDateTime(year: date.year, month: date.month, day: date.day - 1, calendarType: getCalendarType());
+    DateTime newDate = date.toDateTime().subtract(Duration(days: 1));
+    return CalendarDateTime(
+      year: newDate.year,
+      month: newDate.month,
+      day: newDate.day,
+      calendarType: getCalendarType(),
+    );
   }
 
   @override
   CalendarDateTime getNextDayDateTime() {
     final date = _getSelectedDate();
-    return CalendarDateTime(year: date.year, month: date.month, day: date.day + 1, calendarType: getCalendarType());
+    DateTime newDate = date.toDateTime().add(Duration(days: 1));
+    return CalendarDateTime(
+      year: newDate.year,
+      month: newDate.month,
+      day: newDate.day,
+      calendarType: getCalendarType(),
+    );
   }
 
   @override
