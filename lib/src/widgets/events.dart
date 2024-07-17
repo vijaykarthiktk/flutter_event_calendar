@@ -97,7 +97,6 @@ class Events extends StatelessWidget {
               eventStyle.emptyText ??
                   Translator.getTranslation('empty'),
               style: TextStyle(
-                color: eventStyle.emptyTextColor,
                 fontSize: 25,
                 fontFamily: CalendarOptions.of(context).font,
               ),
