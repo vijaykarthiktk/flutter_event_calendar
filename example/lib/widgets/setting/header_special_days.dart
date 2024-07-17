@@ -28,7 +28,8 @@ class _HeaderSpecialDaysState extends State<HeaderSpecialDays> {
 
   @override
   Widget build(BuildContext context) {
-    //listbuilder generator
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
+
     List<DataPickerItem> selectBottomSheetDate = [
       DataPickerItem(
         date: widget.calendarDateTime.day,
@@ -65,7 +66,7 @@ class _HeaderSpecialDaysState extends State<HeaderSpecialDays> {
               widget.speacialDate(widget.calendarDateTime);
             });
           },
-          yearStyle: YearOptions(selectedColor: Colors.blue),
+          yearStyle: YearOptions(selectedColor: colorScheme.primary),
         ),
         nameSelectDate: PartFormat.YEAR,
       ),

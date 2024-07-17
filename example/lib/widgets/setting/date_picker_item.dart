@@ -24,7 +24,6 @@ class _DataPickerItemState extends State<DataPickerItem> {
       child: TextButton(
           onPressed: () {
             showModalBottomSheet(
-              backgroundColor: Colors.transparent,
               context: context,
               builder: (BuildContext mmm) {
                 return widget.selectDate;

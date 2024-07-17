@@ -25,54 +25,58 @@ class SelectMonth extends StatelessWidget {
       borderRadius: BorderRadius.circular(8),
     );
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(26), topRight: Radius.circular(26)),
-        color: monthStyle?.backgroundColor,
-      ),
-      height: 380,
-      child: Padding(
-        padding: const EdgeInsets.all(30),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Text(
-              '${Translator.getTranslation('month_selector')}',
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w500,
-                fontFamily: monthStyle?.font,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Table(
-                      border: const TableBorder(
-                        horizontalInside:
-                            BorderSide(color: Colors.black12, width: 0.2),
-                        verticalInside:
-                            BorderSide(color: Colors.black12, width: 0.2),
-                      ),
-                      children: monthsWidgetMaker(context),
-                    )
-                  ],
+    return BottomSheet(
+      onClosing: () {},
+      builder: (context) => Container(
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(26), topRight: Radius.circular(26)),
+        ),
+        height: 380,
+        child: Padding(
+          padding: const EdgeInsets.all(30),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Text(
+                '${Translator.getTranslation('month_selector')}',
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: monthStyle?.font,
                 ),
               ),
-            )
-          ],
+              const SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Table(
+                        border: const TableBorder(
+                          horizontalInside:
+                              BorderSide(color: Colors.black12, width: 0.2),
+                          verticalInside:
+                              BorderSide(color: Colors.black12, width: 0.2),
+                        ),
+                        children: monthsWidgetMaker(context),
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 
   List<TableRow> monthsWidgetMaker(context) {
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
+
     months = Translator.getFullMonthNames();
 
     List<Widget> _buildRowCells(int rowIndex) {
@@ -99,7 +103,7 @@ class SelectMonth extends StatelessWidget {
                       months[(rowIndex * 3) + j].toString(),
                       style: TextStyle(
                         fontSize: 16,
-                        color: mMonth == currentMonth ? Colors.white : null,
+                        color: mMonth == currentMonth ? colorScheme.onPrimary : null,
                         fontFamily: monthStyle?.font,
                       ),
                       maxLines: 1,

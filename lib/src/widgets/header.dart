@@ -17,6 +17,7 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Material(
       color: Colors.transparent,
       child: Padding(
@@ -38,13 +39,9 @@ class Header extends StatelessWidget {
                     customBorder: CircleBorder(),
                     child: Padding(
                       padding: EdgeInsets.all(8),
-                      child: RotatedBox(
-                        quarterTurns: 2,
-                        child: Icon(
-                          Icons.arrow_forward_ios,
-                          size: 18,
-                          color: HeaderOptions.of(context).navigationColor,
-                        ),
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        size: 18,
                       ),
                     ),
                   ),
@@ -60,15 +57,13 @@ class Header extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           showModalBottomSheet(
-                            backgroundColor: Colors.transparent,
                             context: context,
                             builder: (BuildContext mmm) {
                               return SelectMonth(
                                 onHeaderChanged: onMonthChanged,
                                 monthStyle: MonthOptions(
                                   font: CalendarOptions.of(context).font,
-                                  selectedColor: DayOptions.of(context)
-                                      .selectedBackgroundColor,
+                                  selectedColor: colorScheme.primary,
                                   backgroundColor: CalendarOptions.of(context).bottomSheetBackColor
                                 ),
                               );
@@ -85,7 +80,6 @@ class Header extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 20,
-                              color: HeaderOptions.of(context).headerTextColor,
                               fontFamily: CalendarOptions.of(context).font,
                             ),
                           ),
@@ -114,7 +108,6 @@ class Header extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 20,
-                            color: HeaderOptions.of(context).headerTextColor,
                             fontFamily: CalendarOptions.of(context).font,
                           ),
                         ),
@@ -140,7 +133,6 @@ class Header extends StatelessWidget {
                       child: Icon(
                         Icons.arrow_forward_ios,
                         size: 18,
-                        color: HeaderOptions.of(context).navigationColor,
                       ),
                     ),
                   ),
@@ -172,7 +164,6 @@ class Header extends StatelessWidget {
           child: Icon(
             Icons.restore,
             size: 24,
-            color: HeaderOptions.of(context).headerTextColor,
           ),
         ),
       ),
@@ -199,7 +190,6 @@ class Header extends StatelessWidget {
                 ? Icons.calendar_today_outlined
                 : Icons.calendar_today_outlined,
             size: 18,
-            color: HeaderOptions.of(context).calendarIconColor,
           ),
         ),
       );

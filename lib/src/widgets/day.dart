@@ -30,19 +30,14 @@ class Day extends StatelessWidget {
 
   late Widget child;
 
-  late Color textColor;
 
   @override
   Widget build(BuildContext context) {
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
     dayOptions = DayOptions.of(context);
     calendarOptions = CalendarOptions.of(context);
     opacity = _shouldHaveTransparentColor() ? 0.5 : 1;
 
-    textColor = dayStyle!.useDisabledEffect
-        ? dayOptions!.disabledTextColor
-        : dayStyle!.selected
-            ? dayOptions!.selectedTextColor
-            : dayOptions!.unselectedTextColor;
 
     child = InkWell(
       onTap: (() {
@@ -61,7 +56,7 @@ class Day extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color: _getTitleColor(),
+                  color: dayStyle!.selected ? colorScheme.primary : null,
                   fontFamily: CalendarOptions.of(context).font,
                 ),
               ),
@@ -78,7 +73,7 @@ class Day extends StatelessWidget {
                     : 0)),
             decoration: BoxDecoration(
                 color: dayStyle!.selected
-                    ? dayOptions!.selectedBackgroundColor
+                    ? colorScheme.primary
                     : dayOptions!.unselectedBackgroundColor,
                 shape: BoxShape.circle),
             constraints: BoxConstraints(
@@ -91,7 +86,7 @@ class Day extends StatelessWidget {
                   child: Text(
                     '$day',
                     style: TextStyle(
-                      color: textColor,
+                      color: dayStyle!.selected? colorScheme.onPrimary : null,
                       fontFamily: CalendarOptions.of(context).font,
                     ),
                   ),

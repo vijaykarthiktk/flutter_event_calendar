@@ -23,41 +23,42 @@ class SelectYear extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
+
     animateToCurrentYear();
 
     years = CalendarUtils.getYears();
 
     selectedDecoration = BoxDecoration(
-      color: yearStyle?.selectedColor,
+      color: colorScheme.primary,
       borderRadius: BorderRadius.circular(8),
     );
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(26), topRight: Radius.circular(26)),
-        color: yearStyle?.backgroundColor,
-      ),
-      height: 380,
-      child: Padding(
-        padding: const EdgeInsets.all(30),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Text(
-              '${Translator.getTranslation('year_selector')}',
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w500,
-                fontFamily: yearStyle?.font,
+    return BottomSheet(
+      onClosing: () {},
+      builder: (context) => Container(
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(26), topRight: Radius.circular(26)),
+        ),
+        height: 380,
+        child: Padding(
+          padding: const EdgeInsets.all(30),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Text(
+                '${Translator.getTranslation('year_selector')}',
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: yearStyle?.font,
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Expanded(
-              child: Material(
-                color: Colors.transparent,
+              const SizedBox(
+                height: 20,
+              ),
+              Expanded(
                 child: GridView.builder(
                     controller: _scrollController,
                     itemCount: years.length,
@@ -66,14 +67,16 @@ class SelectYear extends StatelessWidget {
                     itemBuilder: (context, index) =>
                         yearWidgetMaker(years[index], context)),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget yearWidgetMaker(year, context) {
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
+
     return InkWell(
       onTap: (() {
         Navigator.pop(context);
@@ -87,7 +90,7 @@ class SelectYear extends StatelessWidget {
             '$year',
             style: TextStyle(
               fontSize: 16,
-              color: year == selectedYear ? Colors.white : null,
+              color: year == selectedYear ? colorScheme.onPrimary : null,
               fontFamily: yearStyle?.font,
             ),
           ),

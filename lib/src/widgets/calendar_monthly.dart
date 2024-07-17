@@ -54,13 +54,14 @@ class _CalendarMonthlyState extends State<CalendarMonthly> {
 
   @override
   Widget build(BuildContext context) {
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           if (dayOptions.showWeekDay) ...[
-            _buildDayName(),
+            _buildDayName(context),
           ],
           SizedBox(
             height: 12,
@@ -71,7 +72,8 @@ class _CalendarMonthlyState extends State<CalendarMonthly> {
     );
   }
 
-  _buildDayName() {
+  _buildDayName(BuildContext context) {
+    ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       textDirection: EventCalendar.calendarProvider.isRTL()
@@ -92,7 +94,7 @@ class _CalendarMonthlyState extends State<CalendarMonthly> {
                 dayNames[index],
                 style: TextStyle(
                     color: dayNames[index] == dayName
-                        ? DayOptions.of(context).selectedBackgroundColor
+                        ? colorScheme.primary
                         : null,
                     fontSize: 15,
                     fontFamily: CalendarOptions.of(context).font),

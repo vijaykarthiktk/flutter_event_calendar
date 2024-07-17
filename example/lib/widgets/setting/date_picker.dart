@@ -65,7 +65,6 @@ class _DatePickerState extends State<DatePicker> {
           margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           child: TextButton(
             style: ElevatedButton.styleFrom(
-              primary: Colors.blue,
               minimumSize: const Size.fromHeight(10),
             ),
             onPressed: () {
