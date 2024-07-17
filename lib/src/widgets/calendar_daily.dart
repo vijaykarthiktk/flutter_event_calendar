@@ -54,13 +54,6 @@ class CalendarDaily extends StatelessWidget {
                   child: IgnorePointer(
                     child: Container(
                       width: 70,
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          tileMode: TileMode.clamp,
-                        ),
-                      ),
                     ),
                   ),
                 ),
@@ -71,13 +64,6 @@ class CalendarDaily extends StatelessWidget {
                   child: IgnorePointer(
                     child: Container(
                       width: 70,
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.centerRight,
-                          end: Alignment.centerLeft,
-                          tileMode: TileMode.clamp,
-                        ),
-                      ),
                     ),
                   ),
                 ),
