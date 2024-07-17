@@ -6,6 +6,7 @@ class EventOptions extends Model {
   Color emptyTextColor;
   IconData emptyIcon;
   Color emptyIconColor;
+  bool showEventIcon;
   bool Function()? showLoadingForEvent;
   Widget Function()? loadingWidget;
 
@@ -13,6 +14,7 @@ class EventOptions extends Model {
     this.emptyText,
     this.showLoadingForEvent,
     this.loadingWidget,
+    this.showEventIcon = true,
     this.emptyTextColor = const Color(0xffe5e5e5),
     this.emptyIcon = Icons.reorder,
     this.emptyIconColor = const Color(0xffebebeb),

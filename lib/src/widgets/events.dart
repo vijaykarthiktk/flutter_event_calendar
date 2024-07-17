@@ -88,11 +88,13 @@ class Events extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              eventStyle.emptyIcon,
-              size: 95,
-              color: eventStyle.emptyIconColor,
-            ),
+            if(eventStyle.showEventIcon)...[
+              Icon(
+                eventStyle.emptyIcon,
+                size: 95,
+                color: eventStyle.emptyIconColor,
+              ),
+            ],
             Text(
               eventStyle.emptyText ??
                   Translator.getTranslation('empty'),
